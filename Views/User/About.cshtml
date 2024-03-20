@@ -1,0 +1,18 @@
+﻿@model CloudDevelopment.Models.userTable
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1>About</h1>
+<p>This is a test for the about page of the basic web application</p>
+
+<body>
+    <form action="About" method="post">
+        <p>Please enter your first and last name:</p>
+        <input type="text" name="Name" placeholder="" required>
+        <input type="text" name="Surname" placeholder="" required>
+        <input type="text" name="Email" placeholder="" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
