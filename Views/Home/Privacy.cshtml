@@ -1,6 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+﻿@model CloudDevelopment.Models.userTable
+@{
+    ViewData["Title"] = "Login";
 }
+
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="text-center">
+    <h1 class="display-4">Login</h1>
+    <p>If you don't have an account <a href="https://localhost:7277/User/About">Sign Up</a> for a new account.</p>
+</div>
+
+<body>
+    <form asp-action="Privacy" method="post">
+        <p>Please enter your first name and email:</p>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="email" placeholder="example@gmail.com" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+
