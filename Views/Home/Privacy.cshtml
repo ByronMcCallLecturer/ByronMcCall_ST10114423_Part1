@@ -11,12 +11,11 @@
 </div>
 
 <body>
-    <form asp-action="Privacy" method="post">
+    <form asp-controller="Login" asp-action="Privacy" method="post">
         <p>Please enter your first name and email:</p>
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="email" placeholder="example@gmail.com" required>
         <button type="submit">Submit</button>
     </form>
+
 </body>
-
-

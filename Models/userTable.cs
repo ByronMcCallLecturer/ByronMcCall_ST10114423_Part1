@@ -17,7 +17,7 @@ namespace CloudDevelopment.Models
 
         public static SqlConnection con = new SqlConnection(con_string);
 
-        //public int userID { get; set; }
+        
 
         public string  Name { get; set; }
 
@@ -25,23 +25,12 @@ namespace CloudDevelopment.Models
 
         public string Email { get; set; }
 
-        //public string ErrorMessage { get; set; }
+        
 
 
 
         public int insert_User(userTable m)
         {
-            // declaring string with object name "sql" where we will write the insert statements
-            //string sql = @"insert into userTable([[userName], [userSurname], [userEmail]) values(" + m.Name + ", " + m.Surname + ", " + m.Email + ")";
-
-
-            //SqlCommand cmd = new SqlCommand(sql, con);
-
-
-            //return cmd.ExecuteNonQuery();
-
-
-            //same methods below, but as you can see.. much longer to complete
 
             try
             {

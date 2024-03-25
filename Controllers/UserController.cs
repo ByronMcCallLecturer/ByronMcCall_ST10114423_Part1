@@ -22,26 +22,6 @@ namespace CloudDevelopment.Controllers
             return View(usrtbl);
         }
 
-        //[HttpPost]
-        //public IActionResult Privacy(userTable u)
-        //{
-            //var result = usrtbl.select_User();
-
-           // return View("Index", "Home"); // Ensure 'u' is not null
-        //}
-
-
-
-
-
-
-
-        [HttpGet]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
 
     }
 }
