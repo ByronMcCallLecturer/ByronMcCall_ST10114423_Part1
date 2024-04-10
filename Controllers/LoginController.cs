@@ -17,12 +17,12 @@ namespace CloudDevelopment.Controllers
         public ActionResult Privacy(string email, string name)
         {
             var loginModel = new LoginModel();
-            int userId = loginModel.SelectUser(email, name);
-            if (userId != -1)
+            int userID = loginModel.SelectUser(email, name);
+            if (userID != -1)
             {
                 // User found, proceed with login logic (e.g., set authentication cookie)
                 // For demonstration, redirecting to a dummy page
-                return RedirectToAction("Index", "Home", new { userId = userId });
+                return RedirectToAction("Index", "Home", new { userID = userID });
             }
             else
             {

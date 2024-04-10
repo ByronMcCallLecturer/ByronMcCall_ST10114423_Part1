@@ -1,11 +1,44 @@
 ﻿@model CloudDevelopment.Models.userTable
-
 @{
     ViewData["Title"] = "Home Page";
+    var userID = ViewData["userID"];
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<h2>Welcome to the Home Page!</h2>
+
+@if (userID != null)
+{
+    <p>User ID: @userID</p>
+}
+
+@if (Model != null)
+{
+    <h2>User Details:</h2>
+    <p>Name: @Model.Name</p>
+    <p>Surname: @Model.Surname</p>
+    <p>Email: @Model.Email</p>
+}
+
+<h2>All Products:</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+
 

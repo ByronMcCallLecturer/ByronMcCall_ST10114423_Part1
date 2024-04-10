@@ -21,18 +21,6 @@ namespace CloudDevelopment.Models
 
         public int insert_product(productTable p)
         {
-            //declaring string with object name "sql" where we will write the insert statements
-            //string sql = @"insert into userTable([[userName], [userSurname], [userEmail]) values(" + m.Name + ", " + m.Surname + ", " + m.Email + ")";
-
-
-            //SqlCommand cmd = new SqlCommand(sql, con);
-
-
-            //return cmd.ExecuteNonQuery();
-
-
-            //same methods below, but as you can see.. much longer to complete
-
 
             try
             {

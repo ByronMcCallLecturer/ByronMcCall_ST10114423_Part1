@@ -15,6 +15,7 @@ namespace CloudDevelopment.Controllers
 
         public IActionResult Index(int userID)
         {
+            ViewData["userID"] = userID;
             return View();
         }
 
