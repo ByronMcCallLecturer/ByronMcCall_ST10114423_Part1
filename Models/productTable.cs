@@ -9,6 +9,9 @@ namespace CloudDevelopment.Models
 
         public static SqlConnection con = new SqlConnection(con_string);
 
+
+        public int ProductID { get; set; }
+
         public string Name { get; set; }
 
         public string Price { get; set; }
@@ -44,5 +47,35 @@ namespace CloudDevelopment.Models
 
 
         }
+
+
+        // Method to retrieve all products from the database
+        public static List<productTable> GetAllProducts()
+        {
+            List<productTable> products = new List<productTable>();
+
+            using (SqlConnection con = new SqlConnection(con_string))
+            {
+                string sql = "SELECT * FROM productTable";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    productTable product = new productTable();
+                    product.ProductID = Convert.ToInt32(rdr["productID"]);
+                    product.Name = rdr["productName"].ToString();
+                    product.Price = rdr["productPrice"].ToString();
+                    product.Category = rdr["productCategory"].ToString();
+                    product.Availability = rdr["productAvailability"].ToString();
+
+                    products.Add(product);
+                }
+            }
+
+            return products;
+        }
+
     }
 }

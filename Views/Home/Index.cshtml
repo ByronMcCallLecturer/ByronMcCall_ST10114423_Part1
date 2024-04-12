@@ -1,7 +1,9 @@
-﻿@model CloudDevelopment.Models.userTable
+﻿@model int  // We only need to pass userID to this view
+
 @{
     ViewData["Title"] = "Home Page";
     var userID = ViewData["userID"];
+    var products = ViewData["Products"] as List<CloudDevelopment.Models.productTable>;
 }
 
 <div class="text-center">
@@ -16,29 +18,34 @@
     <p>User ID: @userID</p>
 }
 
-@if (Model != null)
-{
-    <h2>User Details:</h2>
-    <p>Name: @Model.Name</p>
-    <p>Surname: @Model.Surname</p>
-    <p>Email: @Model.Email</p>
-}
-
-<h2>All Products:</h2>
+<h2>All Products</h2>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
+            <th>Name</th>
             <th>Price</th>
             <th>Category</th>
             <th>Availability</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Category</td>
+                <td>@product.Availability</td>
+                <td>
+                    <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
+                        <input type="hidden" name="userID" value="@userID" />
+                        <input type="hidden" name="productID" value="@product.ProductID" />
+                        <button type="submit">Place Order</button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-
-

@@ -15,7 +15,13 @@ namespace CloudDevelopment.Controllers
 
         public IActionResult Index(int userID)
         {
-            ViewData["userID"] = userID;
+            // Retrieve all products from the database
+            List<productTable> products = productTable.GetAllProducts();
+
+            // Pass products and userID to the view
+            ViewData["Products"] = products;
+            ViewData["UserID"] = userID;
+
             return View();
         }
 
