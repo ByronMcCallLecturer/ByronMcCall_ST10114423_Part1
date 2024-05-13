@@ -1,22 +1,29 @@
 using CloudDevelopment.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
 
 namespace CloudDevelopment.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHttpContextAccessor _httpContextAccessor; // Add IHttpContextAccessor
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
+            _httpContextAccessor = httpContextAccessor; // Initialize IHttpContextAccessor
         }
 
-        public IActionResult Index(int userID)
+        public IActionResult Index()
         {
             // Retrieve all products from the database
             List<productTable> products = productTable.GetAllProducts();
+
+            // Retrieve userID from session
+            int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
 
             // Pass products and userID to the view
             ViewData["Products"] = products;
@@ -24,6 +31,8 @@ namespace CloudDevelopment.Controllers
 
             return View();
         }
+
+
 
         public IActionResult Privacy()
         {

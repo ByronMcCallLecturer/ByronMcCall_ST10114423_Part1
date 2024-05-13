@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Options;
+
 namespace CloudDevelopment
 {
     public class Program
@@ -8,6 +10,17 @@ namespace CloudDevelopment
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //----------------------------------------------------------------------------------------------------------------------------------------------------
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession( Options =>
+            {
+                Options.IdleTimeout = TimeSpan.FromMinutes(120);           
+            });
+            //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
             var app = builder.Build();
 
@@ -21,6 +34,9 @@ namespace CloudDevelopment
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            //----------------------------------------------------------------------------------------------------------------------------------------------------
+            app.UseSession();
+            //----------------------------------------------------------------------------------------------------------------------------------------------------
 
             app.UseRouting();
 
